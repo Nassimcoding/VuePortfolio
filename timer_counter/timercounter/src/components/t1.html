@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vue</title>
+    <script src="https://unpkg.com/vue@3.2.6"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    countdown: 10
+                };
+            },
+            created() {
+                setInterval(() => {
+                    if (this.countdown > 0) {
+                        this.countdown--;
+                    }
+                }, 1000);
+            },
+            template: `
+                <div>
+                    <div v-if="countdown > 0">
+                        {{ countdown }}
+                    </div>
+                    <div v-else>
+                        Time's up!
+                    </div>
+                </div>
+            `
+        });
+
+        app.mount('#app');
+    </script>
+
+</body>
+
+</html>
